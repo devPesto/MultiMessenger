@@ -1,0 +1,22 @@
+hazelcast:
+    cluster-name: 'MultiCache'
+    network:
+        port:
+            auto-increment: true
+            port-count: 10
+            port: 5701
+
+        join:
+            auto-detection:
+                enabled: true
+
+            multicast:
+                enabled: true
+
+            tcp-ip:
+                enabled: false
+                interface: 127.0.0.1
+                member-list:
+                    - 127.0.0.1
+                    - 192.168.0.1:22175
+                    - my.host.com
