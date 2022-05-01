@@ -14,6 +14,7 @@ import java.io.InputStream;
 public final class MultiCache extends JavaPlugin {
     private final File configFile = new File(getDataFolder(), "hazelcast.yml");
     private HazelcastInstance hazelcast = null;
+    private static final MultiCache INSTANCE = new MultiCache();
 
     @Override
     public void onEnable() {
@@ -36,6 +37,10 @@ public final class MultiCache extends JavaPlugin {
             }
         Config hazelConf = new YamlConfigBuilder(configFile.getName()).build();
         this.hazelcast = Hazelcast.newHazelcastInstance(hazelConf);
+    }
+
+    public MultiCache getInstance(){
+        return INSTANCE;
     }
 
     public HazelcastInstance getHazelcast(){
