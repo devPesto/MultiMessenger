@@ -29,7 +29,7 @@ Then just restart all servers.
     <dependency>
         <groupId>com.github.pestonotpasta</groupId>
         <artifactId>MultiCache</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>0.1</version>
     </dependency>
 </dependencies>
 
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-  compile "com.github.pestonotpasta:multicache:1.0.0-RELEASE"
+  compile "com.github.pestonotpasta:multicache:0.1"
 }
 
 ```
