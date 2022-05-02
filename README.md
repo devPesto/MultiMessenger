@@ -1,5 +1,9 @@
 # MultiCache
 
+[![](https://jitpack.io/v/PestoNotPasta/MultiCache.svg)](https://jitpack.io/#PestoNotPasta/MultiCache)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+
 A library that uses Hazelcast for caching on [MultiPaper](https://github.com/PureGero/MultiPaper).
 
 ## Installation 
