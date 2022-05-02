@@ -53,7 +53,7 @@ dependencies {
 
 ### How To Use
 
-The MultiCache API is a singleton and can be accessed like so:
+The MultiCache api is a singleton and can be accessed like so:
 
 ```java
 MultiCache multiCache = MultiCache.getInstance();
