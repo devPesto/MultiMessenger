@@ -1,9 +1,13 @@
 package com.github.pestonotpasta.multicache;
 
+import com.hazelcast.cluster.Member;
+import com.hazelcast.cluster.MembershipEvent;
+import com.hazelcast.cluster.MembershipListener;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.YamlConfigBuilder;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -25,7 +29,7 @@ public final class MultiCache extends JavaPlugin {
         instance = this;
         try {
             initHazelcast();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -42,7 +46,12 @@ public final class MultiCache extends JavaPlugin {
 
         URL url = configFile.toPath().toUri().toURL();
         Config hazelConf = new YamlConfigBuilder(url).build();
-        this.hazelcast = Hazelcast.newHazelcastInstance(hazelConf);
+        hazelConf.getJetConfig().setEnabled(true); // Enable Jet config
+
+        // Override logging type
+        hazelConf.setProperty("hazelcast.logging.type", "none");
+        hazelcast = Hazelcast.newHazelcastInstance(hazelConf);
+        logMembers();
     }
 
     public static MultiCache getInstance() {
