@@ -18,6 +18,7 @@ public final class MultiCache extends JavaPlugin {
     private static final Logger log = Bukkit.getLogger();
     private static HazelcastInstance hazelcast;
     private static MultiCache instance;
+    private boolean isShuttingDown = false;
 
     @Override
     public void onEnable() {
@@ -31,7 +32,8 @@ public final class MultiCache extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        hazelcast.shutdown();
+        this.isShuttingDown = true;
+        shutdown();
     }
 
     private void initHazelcast() throws IOException {
@@ -49,6 +51,11 @@ public final class MultiCache extends JavaPlugin {
 
     public HazelcastInstance getHazelcast() {
         return hazelcast;
+    }
+
+    public void shutdown() {
+        if (hazelcast != null && isShuttingDown)
+            hazelcast.shutdown();
     }
 
     private static void logMembers() {
