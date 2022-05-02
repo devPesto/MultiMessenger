@@ -66,5 +66,5 @@ HazelcastInstance hz = multiCache.getHazelcast();
 
 IMap map = hz.getMap("my-distributed-map");
 map.put("name", "Pesto");
-map.get("key");
+map.get("name");
 ```
