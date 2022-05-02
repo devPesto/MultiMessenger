@@ -51,6 +51,11 @@ dependencies {
 
 ```
 
+**Note:** Remember to include the dependency into your `plugin.yml`
+```yaml
+depend: [MultiCache]
+```
+
 ### How To Use
 
 The MultiCache api is a singleton and can be accessed like so:
