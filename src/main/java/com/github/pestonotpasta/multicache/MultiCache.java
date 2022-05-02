@@ -15,7 +15,8 @@ import java.util.logging.Logger;
 
 public final class MultiCache extends JavaPlugin {
     private final File configFile = new File(getDataFolder(), "config.yml");
-    private HazelcastInstance hazelcast = null;
+    private static final Logger log = Bukkit.getLogger();
+    private static HazelcastInstance hazelcast;
     private static MultiCache instance;
 
     @Override
@@ -40,6 +41,14 @@ public final class MultiCache extends JavaPlugin {
         URL url = configFile.toPath().toUri().toURL();
         Config hazelConf = new YamlConfigBuilder(url).build();
         this.hazelcast = Hazelcast.newHazelcastInstance(hazelConf);
+    }
+
+    public static MultiCache getInstance() {
+        return instance;
+    }
+
+    public HazelcastInstance getHazelcast() {
+        return hazelcast;
     }
 
     private static void logMembers() {
