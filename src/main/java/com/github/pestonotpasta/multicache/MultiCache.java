@@ -4,22 +4,23 @@ import com.hazelcast.config.Config;
 import com.hazelcast.config.YamlConfigBuilder;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.internal.nio.IOUtil;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Path;
 
 public final class MultiCache extends JavaPlugin {
-    private final File configFile = new File(getDataFolder(), "hazelcast.yml");
+    private final File configFile = new File(getDataFolder(), "config.yml");
     private HazelcastInstance hazelcast = null;
-    private static final MultiCache INSTANCE = new MultiCache();
+    private static MultiCache instance;
 
     @Override
     public void onEnable() {
+        instance = this;
         try {
-            init();
+            initHazelcast();
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -30,23 +31,20 @@ public final class MultiCache extends JavaPlugin {
         hazelcast.shutdown();
     }
 
-    private void init() throws IOException {
+    private void initHazelcast() throws IOException {
         if (!configFile.exists())
-            try (InputStream is = getResource("hazelcast.yml")) {
-                IOUtil.copy(is, configFile);
-            }
-        Config hazelConf = new YamlConfigBuilder(configFile.getName()).build();
+            saveDefaultConfig();
+
+        URL url = configFile.toPath().toUri().toURL();
+        Config hazelConf = new YamlConfigBuilder(url).build();
         this.hazelcast = Hazelcast.newHazelcastInstance(hazelConf);
     }
 
     public MultiCache getInstance(){
-        return INSTANCE;
+        return instance;
     }
 
     public HazelcastInstance getHazelcast(){
-        if (hazelcast == null)
-            onEnable();
-
         return hazelcast;
     }
 }
