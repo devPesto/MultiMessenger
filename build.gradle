@@ -38,6 +38,7 @@ wrapper {
 
 shadowJar {
     relocate("com.hazelcast", "libs.hazelcast")
+    archiveFileName.set("${project.name}-${this.version}.jar")
     mergeServiceFiles()
 }
 
