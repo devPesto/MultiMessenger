@@ -34,6 +34,7 @@ Then just restart all servers.
         <groupId>com.github.pestonotpasta</groupId>
         <artifactId>MultiCache</artifactId>
         <version>0.2</version>
+        <scope>provided</scope>
     </dependency>
 </dependencies>
 
@@ -46,7 +47,7 @@ repositories {
 }
 
 dependencies {
-  compile "com.github.pestonotpasta:multicache:0.2"
+  compileOnly "com.github.pestonotpasta:multicache:0.2"
 }
 
 ```
