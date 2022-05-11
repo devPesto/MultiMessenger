@@ -1,5 +1,5 @@
 name: MultiCache
-version: '0.2'
+version: '0.3'
 main: com.github.pestonotpasta.multicache.MultiCache
 api-version: 1.18
 description: A caching library for MultiPaper
