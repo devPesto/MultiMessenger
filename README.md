@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-  compileOnly "com.github.pestonotpasta:multicache:0.2"
+  compileOnly "com.github.pestonotpasta:multicache:0.3"
 }
 
 ```
