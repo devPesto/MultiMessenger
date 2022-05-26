@@ -20,7 +20,7 @@ Then just restart all servers.
 
 ## For Developers
 
-Make sure to replace [LATEST] with the latest version according to the badge above.
+Make sure to replace `[LATEST]` with the latest version according to the badge above.
 ### Maven
 ```xml
 <repositories>
