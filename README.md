@@ -20,6 +20,7 @@ Then just restart all servers.
 
 ## For Developers
 
+Make sure to replace [LATEST] with the latest version according to the badge above.
 ### Maven
 ```xml
 <repositories>
@@ -33,7 +34,7 @@ Then just restart all servers.
     <dependency>
         <groupId>com.github.pestonotpasta</groupId>
         <artifactId>MultiCache</artifactId>
-        <version>0.2</version>
+        <version>[LATEST]</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -47,7 +48,7 @@ repositories {
 }
 
 dependencies {
-  compileOnly "com.github.pestonotpasta:multicache:0.3"
+  compileOnly "com.github.pestonotpasta:multicache:[LATEST]"
 }
 
 ```
